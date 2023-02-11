@@ -1,0 +1,15 @@
+
+.blog:hover {
+    transition: box-shadow .3s;
+    /* transform: scaleY(1.01); */
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+.img-rounded {
+    border-radius: 5px !important;
+}
+
+.img-recomm {
+    height: 150px;
+    width: 100%;
+    object-fit: cover;
+}

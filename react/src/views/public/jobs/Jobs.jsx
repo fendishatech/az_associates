@@ -27,28 +27,65 @@ const Jobs = () => {
     getJobs();
   }, []);
 
+  console.log({ jobs });
+
   return (
     <div className="text-dark">
       <Helmet>
         <title>Zerihun Associates | Jobs</title>
       </Helmet>
-      {loading && <p>Loading...</p>}
-      {!loading && (
-        <tbody>
-          {/* {jobs.map((e) => (
-            <p>{e.title}</p>
-          ))} */}
-        </tbody>
-      )}
+
       <Breadcrumb innerPage={"Jobs"} />
+
       <div className="my-5 text-dark">
         <div className="section-title">
           <span>We are Hiring!</span>
           <h2>We are Hiring!</h2>
           <p>We are looking for qualified talent in the following job posts</p>
         </div>
-        <JobCard />
-        <JobCard />
+        {loading && <p>Loading...</p>}
+        {!loading &&
+          jobs.length > 0 &&
+          jobs.map((job, index) => {
+            return (
+              <div className="container job-card-shadow p-4" key={index}>
+                <div className="row">
+                  <div className="col-md-2">
+                    <div className="d-flex align-items-center g-4">
+                      <img
+                        style={{ width: "54px", height: "51px" }}
+                        className="img-fluid"
+                        src={Brand}
+                        alt=""
+                      />
+                      <p className="px-4 text-danger">Zerihun Associates</p>
+                    </div>
+                  </div>
+                  <div className="col-md-7">
+                    <div className="d-flex flex-column">
+                      <h2>{job.title}</h2>
+                      <div className="d-flex justify-content-between">
+                        <p>Zerihun Associates</p>
+                        <p>Addis Ababa</p>
+                        <p>{job.deadline}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-3 d-flex flex-column gap-3">
+                    <button className="btn btn-outline-success px-5 rounded-pill">
+                      Full Time
+                    </button>
+                    <Link
+                      to={`/jobs/${job.id}`}
+                      className="btn btn-outline-success px-5 rounded-pill"
+                    >
+                      See Details {job.id}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
       </div>
     </div>
   );

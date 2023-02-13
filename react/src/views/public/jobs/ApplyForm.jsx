@@ -14,6 +14,7 @@ const ApplyForm = () => {
     experience_yr: "",
     cv_file: "",
   });
+  const [job, setJob] = useState("");
 
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -45,9 +46,19 @@ const ApplyForm = () => {
         }
       });
   };
+
+  useEffect(() => {
+    const getJob = async () => {
+      const res = await axiosClient.get(`public/jobs/${id}`);
+
+      setJob(res.data.data.title);
+    };
+
+    getJob();
+  }, []);
   return (
     <div className="container my-5 text-dark contact">
-      <h1 className="mb-3">Apply for (Job Position Name)</h1>
+      <h1 className="mb-3">Apply for {job} Position</h1>
       {errors && (
         <div className="alert">
           {Object.keys(errors).map((key) => (
@@ -66,6 +77,7 @@ const ApplyForm = () => {
                 setUser({ ...user, first_name: ev.target.value })
               }
               placeholder="Firstname"
+              required
             />
           </div>
           <div className="col-md-6 form-group mt-3 mt-md-0">
@@ -77,6 +89,7 @@ const ApplyForm = () => {
                 setUser({ ...user, last_name: ev.target.value })
               }
               placeholder="Lastname"
+              required
             />
           </div>
         </div>
@@ -91,6 +104,7 @@ const ApplyForm = () => {
                 setUser({ ...user, edu_level: ev.target.value })
               }
               placeholder="Example : MSc In Data Science"
+              required
             />
           </div>
           <div className="col-md-6 form-group mt-3 mt-md-0">
@@ -101,7 +115,8 @@ const ApplyForm = () => {
               onChange={(ev) =>
                 setUser({ ...user, experience_yr: ev.target.value })
               }
-              placeholder="Lastname"
+              placeholder="Experience"
+              required
             />
           </div>
         </div>
@@ -114,6 +129,7 @@ const ApplyForm = () => {
               onChange={(ev) =>
                 setUser({ ...user, cv_file: ev.target.files[0] })
               }
+              required
             />
             <div id="fileHelpId" className="form-text">
               Your cv file should not be more than 2MB.

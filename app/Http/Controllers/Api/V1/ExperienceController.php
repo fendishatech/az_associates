@@ -47,21 +47,10 @@ class ExperienceController extends Controller
      * @param  \App\Models\Experience  $experience
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Experience $id)
     {
         $experience = Experience::find($id);
         return new ExperienceResource($experience);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Experience  $experience
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Experience $experience)
-    {
-        //
     }
 
     /**
@@ -84,6 +73,8 @@ class ExperienceController extends Controller
      */
     public function destroy(Experience $experience)
     {
-        //
+        $experience->delete();
+
+        return response("", 204);
     }
 }

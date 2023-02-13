@@ -21,5 +21,12 @@ class AuthorSeeder extends Seeder
             "title" => "Dr.",
             "position" => "Technical Expert",
         ]);
+
+        DB::table('authors')->insert([
+            "first_name" => "Joseph",
+            "last_name" => "Daniel",
+            "title" => "Dr.",
+            "position" => "Technical Expert",
+        ]);
     }
 }

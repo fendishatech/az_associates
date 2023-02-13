@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('/authors', AuthorController::class);
     Route::apiResource('/blogs', BlogController::class);
     Route::apiResource('/jobs', JobController::class);
-    // Route::apiResource('/experiences', ExperienceController::class);
+    Route::apiResource('/experiences', ExperienceController::class);
 });
 
 Route::post('/login', [AuthController::class, 'login']);

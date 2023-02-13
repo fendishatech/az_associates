@@ -65,18 +65,21 @@ class JobController extends Controller
      */
     public function destroy(Job $job)
     {
-        //
+        $job->delete();
+
+        return response("", 204);
     }
 
     public function apply(Request $req)
     {
+
         $candidate = new Candidate();
 
         $candidate->first_name = $req->first_name;
         $candidate->last_name = $req->last_name;
         $candidate->edu_level = $req->edu_level;
         $candidate->experience_yr = $req->experience_yr;
-        $candidate->cv_file = $req->file('cv_file')->store('products');
+        $candidate->cv_file = $req->file('cv_file')->store('blogs');
         $candidate->job_id = $req->job_id;
 
         $candidate->save();

@@ -32,7 +32,11 @@ const BlogDetail = () => {
     <div className="container text-dark">
       <div className="row  mt-4">
         <div className="col-md-8">
-          <img className="img-fluid" src={Pt2} alt="" />
+          <img
+            className="img-fluid"
+            src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+            alt=""
+          />
           <p>by : Author Name</p>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum

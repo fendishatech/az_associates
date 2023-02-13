@@ -33,40 +33,40 @@ const Blogs = () => {
         <title>Zerihun Associates | Blogs</title>
       </Helmet>
       <Breadcrumb innerPage={"Blogs"} />
+
       <div>
         <div className="section-title mt-4">
           <span>Check Out Our Blogs</span>
           <h2>Check Out Our Blogs</h2>
         </div>
       </div>
+
       {loading && <p>Loading...</p>}
-      <div className="container">
-        <div className="row pt-5">
-          <div className="col-md-8">
-            <div className="row">
-              {!loading &&
-                blogs.length > 0 &&
-                blogs.map((blog, index) => (
-                  <Link
-                    className="col-md-6 text-dark mb-4 blog"
-                    to={`/blogs/${index}`}
-                    key={index}
-                  >
-                    <div key={index}>
-                      <img className="img-fluid img-rounded" src={Pt2} alt="" />
-                      <div>
-                        <h4 className="my-2">{blog.title}</h4>
-                        <p>{blog.content}</p>
-                      </div>
+      <div className="container mt-4">
+        <div className="row row-cols-1 row-cols-md-2 g-4">
+          {!loading &&
+            blogs.length > 0 &&
+            blogs.map((blog, index) => (
+              <Link
+                className="col-md-6 text-dark mb-4"
+                to={`/blogs/${blog.id}`}
+                key={index}
+              >
+                <div className="col">
+                  <div className="card">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+                      className="card-img-top"
+                      alt="Hollywood Sign on The Hill"
+                    />
+                    <div className="card-body">
+                      <h5 className="card-title">{blog.title}</h5>
+                      <p className="card-text">{blog.content}</p>
                     </div>
-                  </Link>
-                ))}
-            </div>
-          </div>
-          <div className="col-md-4">
-            <h4>Recent Posts</h4>
-            <img className="img-fluid img-recomm" src={Pt2} alt="" />
-          </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
     </div>

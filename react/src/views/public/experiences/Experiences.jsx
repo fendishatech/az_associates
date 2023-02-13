@@ -33,13 +33,9 @@ const Experiences = () => {
       </Helmet>
       <Breadcrumb innerPage={"Experiences"} />
       {loading && <p>Loading...</p>}
-      {!loading && (
-        <tbody>
-          {/* {experiences.map((e) => (
-            <p>{e.title}</p>
-          ))} */}
-        </tbody>
-      )}
+      {!loading &&
+        experiences.length > 0 &&
+        experiences.map((e) => <p>{e.title}</p>)}
     </div>
   );
 };

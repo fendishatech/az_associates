@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Brand } from "../../../assets/Images";
 import Logo from "../../../components/Logo";
 import { navigationLinks } from "../../../core/navigationLinks";
@@ -23,9 +23,9 @@ const TopBar = () => {
       }
     >
       <div className="container d-flex align-items-center justify-content-between">
-        <a href="/" className="logo">
+        <Link href="/" className="logo">
           <Logo />
-        </a>
+        </Link>
 
         <nav id="navbar" className={`navbar ${toggle ? "navbar-mobile" : ""}`}>
           <ul>

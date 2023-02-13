@@ -7,6 +7,8 @@ use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Http\Resources\JobResource;
+use App\Models\Candidate;
+use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
@@ -17,7 +19,7 @@ class JobController extends Controller
      */
     public function index()
     {
-        return JobResource::collection(Job::where('status', 'desc')->get());
+        return JobResource::collection(Job::query()->orderBy('id', 'desc')->paginate(10));
     }
 
     /**
@@ -37,9 +39,10 @@ class JobController extends Controller
      * @param  \App\Models\Job  $job
      * @return \Illuminate\Http\Response
      */
-    public function show(Job $job)
+    public function show($id)
     {
-        //
+        $job = Job::find($id);
+        return new JobResource($job);
     }
 
     /**
@@ -63,5 +66,21 @@ class JobController extends Controller
     public function destroy(Job $job)
     {
         //
+    }
+
+    public function apply(Request $req)
+    {
+        $candidate = new Candidate();
+
+        $candidate->first_name = $req->first_name;
+        $candidate->last_name = $req->last_name;
+        $candidate->edu_level = $req->edu_level;
+        $candidate->experience_yr = $req->experience_yr;
+        $candidate->cv_file = $req->file('cv_file')->store('products');
+        $candidate->job_id = $req->job_id;
+
+        $candidate->save();
+
+        return $candidate;
     }
 }

@@ -1,5 +1,4 @@
-import Logo from "./images/logo/za_logo.png";
-
+import Brand from "../../public/az-logo.svg";
 import About from "./images/about.jpg";
 
 // PORTFOLIO
@@ -15,4 +14,4 @@ import Team3 from "./images/team/team-3.jpg";
 // CLIENTS
 import Client1 from "./images/clients/client-1.png";
 
-export { Logo, About, Pt1, Pt2, Pt3, Team1, Team2, Team3, Client1 };
+export { Brand, About, Pt1, Pt2, Pt3, Team1, Team2, Team3, Client1 };

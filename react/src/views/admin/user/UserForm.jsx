@@ -13,6 +13,7 @@ export default function UserForm() {
     password: "",
     password_confirmation: "",
   });
+
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(false);
   const { setNotification } = useStateContext();

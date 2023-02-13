@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Logo } from "../../../assets/Images";
+import { Brand } from "../../../assets/Images";
+import Logo from "../../../components/Logo";
 import { navigationLinks } from "../../../core/navigationLinks";
 
 const TopBar = () => {
@@ -23,7 +24,7 @@ const TopBar = () => {
     >
       <div className="container d-flex align-items-center justify-content-between">
         <a href="/" className="logo">
-          <img src={Logo} alt="" className="img-fluid" />
+          <Logo />
         </a>
 
         <nav id="navbar" className={`navbar ${toggle ? "navbar-mobile" : ""}`}>

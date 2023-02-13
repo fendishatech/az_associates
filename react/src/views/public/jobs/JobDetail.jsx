@@ -1,8 +1,35 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axiosClient from "../../../api/axios-client";
+
 import { GoCalendar } from "react-icons/go";
 import { TfiAlarmClock, TfiMapAlt } from "react-icons/tfi";
 import { SlBriefcase } from "react-icons/sl";
 import { Link } from "react-router-dom";
 const JobDetail = () => {
+  const [job, setJob] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getJob = () => {
+      setLoading(true);
+      axiosClient
+        .get(`/public/jobs/${id}`)
+        .then(({ data }) => {
+          setLoading(false);
+          setJob(data.data);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        });
+    };
+
+    getJob();
+  }, []);
+  console.log({ job });
   return (
     <div
       className="container mt-5 text-dark portfolio-details"
@@ -22,6 +49,7 @@ const JobDetail = () => {
 export default JobDetail;
 
 const JobDescription = () => {
+  const { id } = useParams();
   return (
     <div className="p-2">
       <h5 className="job-highlight">Job Title</h5>
@@ -97,7 +125,7 @@ const JobOverview = () => {
             <a href="#">Web design</a>
           </li>
           <div className="apply-btn-container">
-            <Link to="/apply/2" className="apply-btn">
+            <Link to={`"/apply/${id}`} className="apply-btn">
               Apply Now
             </Link>
           </div>

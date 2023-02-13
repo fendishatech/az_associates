@@ -22,11 +22,11 @@ const AboutUs = () => {
             data-aos="fade-right"
           >
             <h3>what we do</h3>
-            <p className="fst-italic">
+            <p className="fst-italic pt-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <ul>
+            <ul className="pt-2">
               <li>
                 <i className="bi bi-check-circle"></i> Ullamco laboris nisi ut
                 aliquip ex ea commodo consequat.
@@ -41,7 +41,7 @@ const AboutUs = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
-            <Link to="/about" className="btn btn-danger p-2 px-5">
+            <Link to="/about" className="btn btn-danger mt-4 p-2 px-5">
               Learn More ...
             </Link>
           </div>

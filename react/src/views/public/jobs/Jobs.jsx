@@ -1,14 +1,45 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Logo } from "../../../assets/Images";
+import { Brand } from "../../../assets/Images";
 import { Helmet } from "react-helmet-async";
+import axiosClient from "../../../api/axios-client";
 import Breadcrumb from "../../../components/Breadcrumb";
 
 const Jobs = () => {
+  const [jobs, setJobs] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getJobs = () => {
+      setLoading(true);
+      axiosClient
+        .get("/public/jobs")
+        .then(({ data }) => {
+          setLoading(false);
+          setJobs(data.data);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        });
+    };
+
+    getJobs();
+  }, []);
+
   return (
     <div className="text-dark">
       <Helmet>
         <title>Zerihun Associates | Jobs</title>
       </Helmet>
+      {loading && <p>Loading...</p>}
+      {!loading && (
+        <tbody>
+          {/* {jobs.map((e) => (
+            <p>{e.title}</p>
+          ))} */}
+        </tbody>
+      )}
       <Breadcrumb innerPage={"Jobs"} />
       <div className="my-5 text-dark">
         <div className="section-title">
@@ -30,7 +61,7 @@ const JobCard = () => {
     <div className="container job-card-shadow p-4">
       <div className="row">
         <div className="col-md-2">
-          <img className="img-fluid" src={Logo} alt="" />
+          <img className="img-fluid" src={Brand} alt="" />
         </div>
         <div className="col-md-7">
           <div className="d-flex flex-column">

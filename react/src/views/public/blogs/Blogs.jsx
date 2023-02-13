@@ -1,9 +1,32 @@
+import { useState, useEffect } from "react";
+import axiosClient from "../../../api/axios-client";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Pt2 } from "../../../assets/Images";
 import Breadcrumb from "../../../components/Breadcrumb";
 
 const Blogs = () => {
+  const [blogs, setBlogs] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const getBlogs = () => {
+      setLoading(true);
+      axiosClient
+        .get("/public/blogs")
+        .then(({ data }) => {
+          setLoading(false);
+          setBlogs(data.data);
+        })
+        .catch((e) => {
+          console.log(e);
+          setLoading(false);
+        });
+    };
+
+    getBlogs();
+  }, []);
+
   return (
     <div className="text-dark">
       <Helmet>
@@ -16,6 +39,14 @@ const Blogs = () => {
           <h2>Check Out Our Blogs</h2>
         </div>
       </div>
+      {loading && <p>Loading...</p>}
+      {!loading && (
+        <tbody>
+          {/* {blogs.map((e) => (
+            <p>{e.title}</p>
+          ))} */}
+        </tbody>
+      )}
       <div className="container">
         <div className="row pt-5">
           <div className="col-md-8">

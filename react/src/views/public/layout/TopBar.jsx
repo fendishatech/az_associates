@@ -23,7 +23,7 @@ const TopBar = () => {
       }
     >
       <div className="container d-flex align-items-center justify-content-between">
-        <Link href="/" className="logo">
+        <Link href="/" className="">
           <Logo />
         </Link>
 

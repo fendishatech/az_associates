@@ -47,24 +47,7 @@
 
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
 
-.brand-name {
-  font-size:24px ;
-}
-
-.brand-name > span {
-  font-weight: normal;
-  font-style: normal;
-}
-
-.moto {
-  font-size: 5px;
-}
 /*--------------------------------------------------------------
 # Services Link button
 --------------------------------------------------------------*/

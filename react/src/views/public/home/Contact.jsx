@@ -42,11 +42,11 @@ const Contact = () => {
         <div className="row" data-aos="fade-up">
           <div className="col-lg-6 ">
             <iframe
-              class="mb-4 mb-lg-0"
+              className="mb-4 mb-lg-0"
               src="https://maps.google.com/maps?q=St.%20Urael%20Square,addis%20ababa&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              frameborder="0"
+              frameBorder="0"
               style={{ border: 0, width: "100%", height: "384px" }}
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </div>
 

@@ -1,9 +1,9 @@
 import { Brand } from "../assets/Images";
-
+import "./logo.css";
 const Logo = () => {
   return (
     <div className="brand">
-      <img src={Brand} alt="" />
+      <img className="brand-img" src={Brand} alt="" />
       <p className="brand-name">
         Zerihun<span>Associates</span>
       </p>
